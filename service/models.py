@@ -245,5 +245,8 @@ class Product(db.Model):
         :rtype: list
 
         """
+        if isinstance(category, str):
+            category = Category[category]
+
         logger.info("Processing category query for %s ...", category.name)
         return cls.query.filter(cls.category == category)
